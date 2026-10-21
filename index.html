@@ -1,0 +1,801 @@
+
+    <!DOCTYPE html>
+    <html lang="vi">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Customer Clustering Report</title>
+        <style>
+            body { font-family: Arial, sans-serif; margin: 24px; background: #f7f9fc; color: #1f2d3d; }
+            h1, h2, h3 { color: #1b2a41; }
+            .container { max-width: 1200px; margin: auto; }
+            .summary { background: white; padding: 18px; border-radius: 10px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+            .chart-box { background: white; padding: 16px; border-radius: 10px; margin: 20px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.05); text-align: center; }
+            .chart-box img { max-width: 100%; height: auto; }
+            .cluster-block { background: white; padding: 18px; border-radius: 12px; margin: 24px 0; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+            .table-wrap { overflow-x: auto; }
+            table { border-collapse: collapse; width: 100%; margin-top: 12px; }
+            th, td { border: 1px solid #dfe6ee; padding: 8px 10px; text-align: left; }
+            th { background: #eef3f9; }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h1>Báo cáo phân cụm khách hàng</h1>
+
+            <div class="summary">
+                <h2>Tổng quan</h2>
+                <table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>Cluster</th>
+      <th>So_luong</th>
+      <th>Tuoi_trung_binh</th>
+      <th>Thu_nhap_tb</th>
+      <th>Spending_tb</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>0</td>
+      <td>48</td>
+      <td>35.145833</td>
+      <td>26.875000</td>
+      <td>49.416667</td>
+    </tr>
+    <tr>
+      <td>1</td>
+      <td>57</td>
+      <td>43.087719</td>
+      <td>52.210526</td>
+      <td>50.228070</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>48</td>
+      <td>39.541667</td>
+      <td>70.500000</td>
+      <td>46.875000</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>47</td>
+      <td>36.787234</td>
+      <td>94.936170</td>
+      <td>54.361702</td>
+    </tr>
+  </tbody>
+</table>
+            </div>
+
+            <div class="chart-box">
+                <h2>Phân bổ khách hàng theo cụm</h2>
+                <img src="charts/cluster_distribution.png" alt="Phân bổ khách hàng theo cụm">
+            </div>
+
+            <h2>Chi tiết từng cụm</h2>
+            
+        <div class="cluster-block">
+            <h3>Cluster 0</h3>
+            <p>Số khách hàng: 48</p>
+            <img src="charts/cluster_0/cluster_0_detail.png" alt="Cluster 0 detail" style="max-width:100%;height:auto;">
+            <div class="table-wrap"><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>CustomerID</th>
+      <th>Age</th>
+      <th>Annual_Income</th>
+      <th>Spending_Score</th>
+      <th>Cluster</th>
+      <th>AgeGroup</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>1</td>
+      <td>19</td>
+      <td>15</td>
+      <td>39</td>
+      <td>0</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>2</td>
+      <td>21</td>
+      <td>15</td>
+      <td>81</td>
+      <td>0</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>3</td>
+      <td>20</td>
+      <td>16</td>
+      <td>6</td>
+      <td>0</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>4</td>
+      <td>23</td>
+      <td>16</td>
+      <td>77</td>
+      <td>0</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>5</td>
+      <td>31</td>
+      <td>17</td>
+      <td>40</td>
+      <td>0</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>6</td>
+      <td>22</td>
+      <td>17</td>
+      <td>76</td>
+      <td>0</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>7</td>
+      <td>35</td>
+      <td>18</td>
+      <td>6</td>
+      <td>0</td>
+      <td>Trung niên</td>
+    </tr>
+    <tr>
+      <td>8</td>
+      <td>23</td>
+      <td>18</td>
+      <td>94</td>
+      <td>0</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>9</td>
+      <td>64</td>
+      <td>19</td>
+      <td>3</td>
+      <td>0</td>
+      <td>Người cao tuổi</td>
+    </tr>
+    <tr>
+      <td>11</td>
+      <td>67</td>
+      <td>19</td>
+      <td>14</td>
+      <td>0</td>
+      <td>Người cao tuổi</td>
+    </tr>
+    <tr>
+      <td>10</td>
+      <td>30</td>
+      <td>19</td>
+      <td>72</td>
+      <td>0</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>12</td>
+      <td>35</td>
+      <td>19</td>
+      <td>99</td>
+      <td>0</td>
+      <td>Trung niên</td>
+    </tr>
+    <tr>
+      <td>15</td>
+      <td>37</td>
+      <td>20</td>
+      <td>13</td>
+      <td>0</td>
+      <td>Trung niên</td>
+    </tr>
+    <tr>
+      <td>13</td>
+      <td>58</td>
+      <td>20</td>
+      <td>15</td>
+      <td>0</td>
+      <td>Người cao tuổi</td>
+    </tr>
+    <tr>
+      <td>14</td>
+      <td>24</td>
+      <td>20</td>
+      <td>77</td>
+      <td>0</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>16</td>
+      <td>22</td>
+      <td>20</td>
+      <td>79</td>
+      <td>0</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>17</td>
+      <td>35</td>
+      <td>21</td>
+      <td>35</td>
+      <td>0</td>
+      <td>Trung niên</td>
+    </tr>
+    <tr>
+      <td>18</td>
+      <td>20</td>
+      <td>21</td>
+      <td>66</td>
+      <td>0</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>19</td>
+      <td>52</td>
+      <td>23</td>
+      <td>29</td>
+      <td>0</td>
+      <td>Người cao tuổi</td>
+    </tr>
+    <tr>
+      <td>20</td>
+      <td>35</td>
+      <td>23</td>
+      <td>98</td>
+      <td>0</td>
+      <td>Trung niên</td>
+    </tr>
+  </tbody>
+</table></div>
+        </div>
+        
+        <div class="cluster-block">
+            <h3>Cluster 1</h3>
+            <p>Số khách hàng: 57</p>
+            <img src="charts/cluster_1/cluster_1_detail.png" alt="Cluster 1 detail" style="max-width:100%;height:auto;">
+            <div class="table-wrap"><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>CustomerID</th>
+      <th>Age</th>
+      <th>Annual_Income</th>
+      <th>Spending_Score</th>
+      <th>Cluster</th>
+      <th>AgeGroup</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>48</td>
+      <td>27</td>
+      <td>40</td>
+      <td>47</td>
+      <td>1</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>47</td>
+      <td>50</td>
+      <td>40</td>
+      <td>55</td>
+      <td>1</td>
+      <td>Người cao tuổi</td>
+    </tr>
+    <tr>
+      <td>51</td>
+      <td>49</td>
+      <td>42</td>
+      <td>52</td>
+      <td>1</td>
+      <td>Người cao tuổi</td>
+    </tr>
+    <tr>
+      <td>52</td>
+      <td>33</td>
+      <td>42</td>
+      <td>60</td>
+      <td>1</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>56</td>
+      <td>47</td>
+      <td>43</td>
+      <td>41</td>
+      <td>1</td>
+      <td>Người cao tuổi</td>
+    </tr>
+    <tr>
+      <td>55</td>
+      <td>50</td>
+      <td>43</td>
+      <td>45</td>
+      <td>1</td>
+      <td>Người cao tuổi</td>
+    </tr>
+    <tr>
+      <td>53</td>
+      <td>31</td>
+      <td>43</td>
+      <td>54</td>
+      <td>1</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>54</td>
+      <td>59</td>
+      <td>43</td>
+      <td>60</td>
+      <td>1</td>
+      <td>Người cao tuổi</td>
+    </tr>
+    <tr>
+      <td>58</td>
+      <td>69</td>
+      <td>44</td>
+      <td>46</td>
+      <td>1</td>
+      <td>Người cao tuổi</td>
+    </tr>
+    <tr>
+      <td>57</td>
+      <td>51</td>
+      <td>44</td>
+      <td>50</td>
+      <td>1</td>
+      <td>Người cao tuổi</td>
+    </tr>
+    <tr>
+      <td>60</td>
+      <td>53</td>
+      <td>46</td>
+      <td>46</td>
+      <td>1</td>
+      <td>Người cao tuổi</td>
+    </tr>
+    <tr>
+      <td>59</td>
+      <td>27</td>
+      <td>46</td>
+      <td>51</td>
+      <td>1</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>62</td>
+      <td>19</td>
+      <td>46</td>
+      <td>55</td>
+      <td>1</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>61</td>
+      <td>70</td>
+      <td>46</td>
+      <td>56</td>
+      <td>1</td>
+      <td>Người cao tuổi</td>
+    </tr>
+    <tr>
+      <td>63</td>
+      <td>67</td>
+      <td>47</td>
+      <td>52</td>
+      <td>1</td>
+      <td>Người cao tuổi</td>
+    </tr>
+    <tr>
+      <td>64</td>
+      <td>54</td>
+      <td>47</td>
+      <td>59</td>
+      <td>1</td>
+      <td>Người cao tuổi</td>
+    </tr>
+    <tr>
+      <td>70</td>
+      <td>32</td>
+      <td>48</td>
+      <td>47</td>
+      <td>1</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>68</td>
+      <td>68</td>
+      <td>48</td>
+      <td>48</td>
+      <td>1</td>
+      <td>Người cao tuổi</td>
+    </tr>
+    <tr>
+      <td>67</td>
+      <td>43</td>
+      <td>48</td>
+      <td>50</td>
+      <td>1</td>
+      <td>Trung niên</td>
+    </tr>
+    <tr>
+      <td>65</td>
+      <td>63</td>
+      <td>48</td>
+      <td>51</td>
+      <td>1</td>
+      <td>Người cao tuổi</td>
+    </tr>
+  </tbody>
+</table></div>
+        </div>
+        
+        <div class="cluster-block">
+            <h3>Cluster 2</h3>
+            <p>Số khách hàng: 48</p>
+            <img src="charts/cluster_2/cluster_2_detail.png" alt="Cluster 2 detail" style="max-width:100%;height:auto;">
+            <div class="table-wrap"><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>CustomerID</th>
+      <th>Age</th>
+      <th>Annual_Income</th>
+      <th>Spending_Score</th>
+      <th>Cluster</th>
+      <th>AgeGroup</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>103</td>
+      <td>67</td>
+      <td>62</td>
+      <td>59</td>
+      <td>2</td>
+      <td>Người cao tuổi</td>
+    </tr>
+    <tr>
+      <td>109</td>
+      <td>68</td>
+      <td>63</td>
+      <td>43</td>
+      <td>2</td>
+      <td>Người cao tuổi</td>
+    </tr>
+    <tr>
+      <td>108</td>
+      <td>54</td>
+      <td>63</td>
+      <td>46</td>
+      <td>2</td>
+      <td>Người cao tuổi</td>
+    </tr>
+    <tr>
+      <td>110</td>
+      <td>66</td>
+      <td>63</td>
+      <td>48</td>
+      <td>2</td>
+      <td>Người cao tuổi</td>
+    </tr>
+    <tr>
+      <td>107</td>
+      <td>66</td>
+      <td>63</td>
+      <td>50</td>
+      <td>2</td>
+      <td>Người cao tuổi</td>
+    </tr>
+    <tr>
+      <td>111</td>
+      <td>65</td>
+      <td>63</td>
+      <td>52</td>
+      <td>2</td>
+      <td>Người cao tuổi</td>
+    </tr>
+    <tr>
+      <td>112</td>
+      <td>19</td>
+      <td>63</td>
+      <td>54</td>
+      <td>2</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>113</td>
+      <td>38</td>
+      <td>64</td>
+      <td>42</td>
+      <td>2</td>
+      <td>Trung niên</td>
+    </tr>
+    <tr>
+      <td>114</td>
+      <td>19</td>
+      <td>64</td>
+      <td>46</td>
+      <td>2</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>117</td>
+      <td>63</td>
+      <td>65</td>
+      <td>43</td>
+      <td>2</td>
+      <td>Người cao tuổi</td>
+    </tr>
+    <tr>
+      <td>115</td>
+      <td>18</td>
+      <td>65</td>
+      <td>48</td>
+      <td>2</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>116</td>
+      <td>19</td>
+      <td>65</td>
+      <td>50</td>
+      <td>2</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>118</td>
+      <td>49</td>
+      <td>65</td>
+      <td>59</td>
+      <td>2</td>
+      <td>Người cao tuổi</td>
+    </tr>
+    <tr>
+      <td>122</td>
+      <td>38</td>
+      <td>67</td>
+      <td>40</td>
+      <td>2</td>
+      <td>Trung niên</td>
+    </tr>
+    <tr>
+      <td>119</td>
+      <td>51</td>
+      <td>67</td>
+      <td>43</td>
+      <td>2</td>
+      <td>Người cao tuổi</td>
+    </tr>
+    <tr>
+      <td>121</td>
+      <td>27</td>
+      <td>67</td>
+      <td>56</td>
+      <td>2</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>120</td>
+      <td>50</td>
+      <td>67</td>
+      <td>57</td>
+      <td>2</td>
+      <td>Người cao tuổi</td>
+    </tr>
+    <tr>
+      <td>123</td>
+      <td>40</td>
+      <td>69</td>
+      <td>58</td>
+      <td>2</td>
+      <td>Trung niên</td>
+    </tr>
+    <tr>
+      <td>124</td>
+      <td>39</td>
+      <td>69</td>
+      <td>91</td>
+      <td>2</td>
+      <td>Trung niên</td>
+    </tr>
+    <tr>
+      <td>125</td>
+      <td>23</td>
+      <td>70</td>
+      <td>29</td>
+      <td>2</td>
+      <td>Thanh niên</td>
+    </tr>
+  </tbody>
+</table></div>
+        </div>
+        
+        <div class="cluster-block">
+            <h3>Cluster 3</h3>
+            <p>Số khách hàng: 47</p>
+            <img src="charts/cluster_3/cluster_3_detail.png" alt="Cluster 3 detail" style="max-width:100%;height:auto;">
+            <div class="table-wrap"><table class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>CustomerID</th>
+      <th>Age</th>
+      <th>Annual_Income</th>
+      <th>Spending_Score</th>
+      <th>Cluster</th>
+      <th>AgeGroup</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>149</td>
+      <td>34</td>
+      <td>78</td>
+      <td>22</td>
+      <td>3</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>160</td>
+      <td>30</td>
+      <td>78</td>
+      <td>73</td>
+      <td>3</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>154</td>
+      <td>38</td>
+      <td>78</td>
+      <td>76</td>
+      <td>3</td>
+      <td>Trung niên</td>
+    </tr>
+    <tr>
+      <td>158</td>
+      <td>30</td>
+      <td>78</td>
+      <td>78</td>
+      <td>3</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>152</td>
+      <td>39</td>
+      <td>78</td>
+      <td>88</td>
+      <td>3</td>
+      <td>Trung niên</td>
+    </tr>
+    <tr>
+      <td>156</td>
+      <td>27</td>
+      <td>78</td>
+      <td>89</td>
+      <td>3</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>150</td>
+      <td>34</td>
+      <td>78</td>
+      <td>90</td>
+      <td>3</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>161</td>
+      <td>56</td>
+      <td>79</td>
+      <td>35</td>
+      <td>3</td>
+      <td>Người cao tuổi</td>
+    </tr>
+    <tr>
+      <td>162</td>
+      <td>29</td>
+      <td>79</td>
+      <td>83</td>
+      <td>3</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>163</td>
+      <td>19</td>
+      <td>81</td>
+      <td>5</td>
+      <td>3</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>164</td>
+      <td>31</td>
+      <td>81</td>
+      <td>93</td>
+      <td>3</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>165</td>
+      <td>50</td>
+      <td>85</td>
+      <td>26</td>
+      <td>3</td>
+      <td>Người cao tuổi</td>
+    </tr>
+    <tr>
+      <td>166</td>
+      <td>36</td>
+      <td>85</td>
+      <td>75</td>
+      <td>3</td>
+      <td>Trung niên</td>
+    </tr>
+    <tr>
+      <td>167</td>
+      <td>42</td>
+      <td>86</td>
+      <td>20</td>
+      <td>3</td>
+      <td>Trung niên</td>
+    </tr>
+    <tr>
+      <td>168</td>
+      <td>33</td>
+      <td>86</td>
+      <td>95</td>
+      <td>3</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>173</td>
+      <td>36</td>
+      <td>87</td>
+      <td>10</td>
+      <td>3</td>
+      <td>Trung niên</td>
+    </tr>
+    <tr>
+      <td>171</td>
+      <td>40</td>
+      <td>87</td>
+      <td>13</td>
+      <td>3</td>
+      <td>Trung niên</td>
+    </tr>
+    <tr>
+      <td>169</td>
+      <td>36</td>
+      <td>87</td>
+      <td>27</td>
+      <td>3</td>
+      <td>Trung niên</td>
+    </tr>
+    <tr>
+      <td>170</td>
+      <td>32</td>
+      <td>87</td>
+      <td>63</td>
+      <td>3</td>
+      <td>Thanh niên</td>
+    </tr>
+    <tr>
+      <td>172</td>
+      <td>28</td>
+      <td>87</td>
+      <td>75</td>
+      <td>3</td>
+      <td>Thanh niên</td>
+    </tr>
+  </tbody>
+</table></div>
+        </div>
+        
+        </div>
+    </body>
+    </html>
+    
